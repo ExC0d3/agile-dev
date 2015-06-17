@@ -14,6 +14,7 @@ class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
   def index
+    increment_counter
     @line_items = LineItem.all
   end
 
@@ -34,7 +35,7 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-
+    session[:counter] = 0
     product = Product.find(params[:product_id])
     @line_item = @cart.line_items.build(product: product)
 
@@ -86,5 +87,7 @@ class LineItemsController < ApplicationController
     def line_item_params
       params.require(:line_item).permit(:product_id, :cart_id)
     end
+
+    
   #...
 end

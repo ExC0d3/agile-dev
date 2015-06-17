@@ -10,3 +10,11 @@ module CurrentCart
 			session[:card_id] =   @cart.id
 		end
 	end
+
+	def increment_counter
+      if session[:counter].nil?
+        session[:counter] = 0
+      end
+      session[:counter] +=1
+      
+    end
